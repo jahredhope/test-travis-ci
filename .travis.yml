@@ -1,22 +1,38 @@
+# Use Node
 language: node_js
 
+# Disable email notifications
 notifications:
   email: false
 
+# Use cache yarn
+# https://docs.travis-ci.com/user/caching/
 cache: yarn
+# Alternatively use
+#  directories:
+#  - node_modules # NPM packages
 
+# Run on multiple versions of Node
+# Will run the default stage multiple times
 node_js:
   - '8'
   - '9'
 
+# Set the default stage
+# Uses matrix expansion to run on each of above versions
+# https://docs.travis-ci.com/user/customizing-the-build/#Build-Matrix
 stage: 📋 Test
 
+# Define additional jobs
 jobs:
   include:
+    # Publish step
+    # Only runs on master builds
     - stage: 🚀 Publish
       script: npm run deploy
       if: branch = master
 
+# Define the order of stages
 stages:
   - 📋 Test
   - 🚀 Publish
