@@ -10,7 +10,7 @@ notifications:
 cache: yarn
 # Alternatively use
 #  directories:
-#  - node_modules # NPM packages
+#  - node_modules
 
 # Run on multiple versions of Node
 # Will run the default stage multiple times
@@ -31,6 +31,9 @@ jobs:
     - stage: 🚀 Publish
       script: npm run deploy
       if: branch = master
+      # By default this stage will use the first version declared above
+      # But the next line just makes this explicit
+      node_js: '8'
 
 # Define the order of stages
 stages:
