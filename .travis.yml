@@ -17,9 +17,6 @@ jobs:
   include:
     - stage: 🚀 Publish
       script: npm run deploy
+      if: branch = master
       node_js:
         - '8'
-
-stages:
-  - name: 🚀 Publish
-    if: branch = master
