@@ -1,30 +1,25 @@
 language: node_js
 
-node_js:
-  - '8'
-  - '9'
-
-env:
-  - FOO=foo
-  - FOO=bar
-
 notifications:
   email: false
 
-before_script:
-  - npm prune
-
 jobs:
   include:
-    - stage: 🛠 Build
-      script: npm run build
     - stage: 📋 Test
       script: npm test
+      node_js:
+        - '8'
+        - '9'
+      env:
+        - FOO=foo
+        - FOO=bar
     - stage: 🚀 Publish
+      test: 'echo "Not testing publish"'
       script: npm run deploy
+      node_js:
+        - '8'
 
 stages:
-  - 🛠 Build
   - 📋 Test
   - name: 🚀 Publish
     if: branch = master
