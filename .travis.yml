@@ -3,23 +3,23 @@ language: node_js
 notifications:
   email: false
 
+cache: yarn
+
+node_js:
+  - '6'
+  - '8'
+  - '9'
+env:
+  - FOO=foo
+  - FOO=bar
+
 jobs:
   include:
-    - stage: 📋 Test
-      script: npm test
-      node_js:
-        - '8'
-        - '9'
-      env:
-        - FOO=foo
-        - FOO=bar
     - stage: 🚀 Publish
-      test: 'echo "Not testing publish"'
       script: npm run deploy
       node_js:
         - '8'
 
 stages:
-  - 📋 Test
   - name: 🚀 Publish
     if: branch = master
