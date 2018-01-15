@@ -24,7 +24,7 @@ jobs:
       script: npm run deploy
 
 stages:
-  - compile
-  - test
-  - name: deploy
+  - 🛠 Build
+  - 📋 Test
+  - name: 🚀 Publish
     if: branch = master
