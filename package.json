@@ -1,0 +1,17 @@
+{
+  "name": "test-travis-ci",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "before-script": "echo \"Running before-script\"",
+    "test": "node src/test.js",
+    "build": "node src/build.js",
+    "script": "echo \"Running script\"",
+    "after-success": "echo \"Running after-success\"",
+    "deploy": "node src/deploy.js"
+  },
+  "dependencies": {
+    "some-values": "^0.0.1"
+  }
+}

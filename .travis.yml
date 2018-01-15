@@ -1,0 +1,30 @@
+language: node_js
+
+node_js:
+  - '8'
+  - '9'
+
+env:
+  - FOO=foo
+  - FOO=bar
+
+notifications:
+  email: false
+
+before_script:
+  - npm prune
+
+jobs:
+  include:
+    - stage: 🛠 Build
+      script: npm run build
+    - stage: 📋 Test
+      script: npm test
+    - stage: 🚀 Publish
+      script: npm run deploy
+
+stages:
+  - compile
+  - test
+  - name: deploy
+    if: branch = master
