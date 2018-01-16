@@ -30,7 +30,8 @@ jobs:
     # Only runs on master builds
     - stage: 🚀 Publish
       script: npm run deploy
-      if: branch = master
+      # Only run publish when on master and not a pull request
+      if: branch = master AND env(TRAVIS_PULL_REQUEST) = false
       # By default this stage will use the first version declared above
       # But the next line just makes this explicit
       node_js: '8'
